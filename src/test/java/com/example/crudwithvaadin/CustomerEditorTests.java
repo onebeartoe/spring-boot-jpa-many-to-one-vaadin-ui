@@ -62,14 +62,14 @@ public class CustomerEditorTests {
 
     private void emptyCustomerWasSetToForm() 
     {
-        this.editor.editCustomer(new Customer());
+        this.editor.editCustomer(new Project());
     }
         
 	private void customerDataWasFilled() {
-		this.editor.editCustomer(new Customer(FIRST_NAME, LAST_NAME));
+		this.editor.editCustomer(new Project(FIRST_NAME, LAST_NAME));
 	}
 
-	ArgumentMatcher<Customer> customerMatchesEditorFields() {
+	ArgumentMatcher<Project> customerMatchesEditorFields() {
 		return customer -> FIRST_NAME.equals(customer.getFirstName()) && LAST_NAME.equals(customer.getLastName());
 	}
 

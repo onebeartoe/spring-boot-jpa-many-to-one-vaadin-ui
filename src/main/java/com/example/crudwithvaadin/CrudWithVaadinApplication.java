@@ -24,20 +24,20 @@ public class CrudWithVaadinApplication
 		return (args) -> {
 			// save a couple of customers
                         
-                        var c1 = new Customer("Jack", "Bauer");
+                        var c1 = new Project("Jack", "Bauer");
                         
-                        var c5 = new Customer("Michelle", "Dessler");
+                        var c5 = new Project("Michelle", "Dessler");
                         
 			repository.save(c1);
-			repository.save(new Customer("Chloe", "O'Brian"));
-			repository.save(new Customer("Kim", "Bauer"));
-			repository.save(new Customer("David", "Palmer"));
+			repository.save(new Project("Chloe", "O'Brian"));
+			repository.save(new Project("Kim", "Bauer"));
+			repository.save(new Project("David", "Palmer"));
 			repository.save(c5);
 
 			// fetch all customers
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
-			for (Customer customer : repository.findAll()) {
+			for (Project customer : repository.findAll()) {
 				log.info(customer.toString());
 			}
 			log.info("");
@@ -45,7 +45,7 @@ public class CrudWithVaadinApplication
 			// fetch an individual customer by ID
 //                        var targetId = 1L;
                         var targetId = 5976359L;
-			Customer customer = repository.findById(targetId).get();
+			Project customer = repository.findById(targetId).get();
 			log.info("Customer found with findOne(1L):");
 			log.info("--------------------------------");
 			log.info(customer.toString());
@@ -54,7 +54,7 @@ public class CrudWithVaadinApplication
 			// fetch customers by last name
 			log.info("Customer found with findByLastNameStartsWithIgnoreCase('Bauer'):");
 			log.info("--------------------------------------------");
-			for (Customer bauer : repository
+			for (Project bauer : repository
 					.findByLastNameStartsWithIgnoreCase("Bauer")) {
 				log.info(bauer.toString());
 			}

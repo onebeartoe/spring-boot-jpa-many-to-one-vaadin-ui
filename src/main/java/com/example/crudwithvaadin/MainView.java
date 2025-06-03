@@ -17,7 +17,7 @@ public class MainView extends VerticalLayout
 
     private final CustomerEditor editor;
 
-    final Grid<Customer> grid;
+    final Grid<Project> grid;
 
     final TextField filter;
 
@@ -27,7 +27,7 @@ public class MainView extends VerticalLayout
     {
 		this.repo = repo;
 		this.editor = editor;
-		this.grid = new Grid<>(Customer.class);
+		this.grid = new Grid<>(Project.class);
 		this.filter = new TextField();
 		this.addNewBtn = new Button("New Customer", VaadinIcon.PLUS.create());
 
@@ -55,7 +55,7 @@ public class MainView extends VerticalLayout
 		});
 
 		// Instantiate and edit new Customer the new button is clicked
-		addNewBtn.addClickListener(e -> editor.editCustomer(new Customer("", "")));
+		addNewBtn.addClickListener(e -> editor.editCustomer(new Project("", "")));
 
 		// Listen changes made by the editor, refresh data from backend
 		editor.setChangeHandler(() -> 

@@ -35,7 +35,7 @@ public class DocumentEditorTests extends CustomerEditorTests
 
 
 //        ArgumentMatcher<Customer> customerMatchesEditorFields = customerMatchesEditorFields();
-        Customer customer = new Customer(FIRST_NAME, FIRST_NAME);
+        Project customer = new Project(FIRST_NAME, FIRST_NAME);
 
         
 Document doc = new Document(testUrl, testUrl, customer);

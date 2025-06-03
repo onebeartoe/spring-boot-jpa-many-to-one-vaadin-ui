@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface DocumentRepository  extends JpaRepository<Document, Long> 
 {
-    List<Document> findAllByCustomer(Customer customer);
+    List<Document> findAllByCustomer(Project customer);
 
-    public void save(Customer argThat);
+    public void save(Project argThat);
 }

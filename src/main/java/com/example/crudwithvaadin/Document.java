@@ -32,12 +32,12 @@ public class Document
     @JoinColumn(name = "customer_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Customer customer;
+    private Project customer;
 
     public Document() {
     }    
     
-    public Document(String url, String notes, Customer customer)
+    public Document(String url, String notes, Project customer)
     {
         this.url = url;
         
@@ -71,11 +71,11 @@ public class Document
         this.notes = notes;
     }
 
-    public Customer getCustomer() {
+    public Project getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(Project customer) {
         this.customer = customer;
     }
 }

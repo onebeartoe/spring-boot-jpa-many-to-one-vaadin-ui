@@ -30,7 +30,7 @@ public class CustomerEditor extends HorizontalLayout implements KeyNotifier
     /**
      * The currently edited customer
      */
-    private Customer customer;
+    private Project customer;
 
     /* Fields to edit properties in Customer entity */
 
@@ -49,7 +49,7 @@ public class CustomerEditor extends HorizontalLayout implements KeyNotifier
     
     HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
-    Binder<Customer> binder = new Binder<>(Customer.class);
+    Binder<Project> binder = new Binder<>(Project.class);
 
     private ChangeHandler changeHandler;
 
@@ -110,7 +110,7 @@ public class CustomerEditor extends HorizontalLayout implements KeyNotifier
 		void onChange();
 	}
 
-	public final void editCustomer(Customer c) 
+	public final void editCustomer(Project c) 
         {            
 		if (c == null) {
 			setVisible(false);

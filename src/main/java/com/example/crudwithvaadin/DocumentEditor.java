@@ -26,7 +26,7 @@ public class DocumentEditor extends VerticalLayout
         
 {
     // the current customer set by listDocuments()
-    private Customer customer;
+    private Project customer;
 //    private long customerId;
     
     /**
@@ -117,7 +117,7 @@ public class DocumentEditor extends VerticalLayout
 //        
 //    }
 
-    void save(Customer customer) 
+    void save(Project customer) 
     {
 //        UI ui = UI.getCurrent();        
 //        ui.access(() -> 
@@ -137,7 +137,7 @@ System.out.println("DocuentEditor#save() - end");
 //        });
     }    
     
-    void listDocuments(Customer customer) 
+    void listDocuments(Project customer) 
     {	
         this.customer = customer;
         

@@ -58,8 +58,8 @@ public class MainViewTests
 		then(getCustomersInGrid()).hasSize(customerCount);
 	}
 
-	private List<Customer> getCustomersInGrid() {
-		ListDataProvider<Customer> ldp = (ListDataProvider) mainView.grid.getDataProvider();
+	private List<Project> getCustomersInGrid() {
+		ListDataProvider<Project> ldp = (ListDataProvider) mainView.grid.getDataProvider();
 		return new ArrayList<>(ldp.getItems());
 	}
 
@@ -82,7 +82,7 @@ public class MainViewTests
 	@Test
 	public void shouldFilterOutTheGridWithTheProvidedLastName() {
 
-		this.repository.save(new Customer("Josh", "Long"));
+		this.repository.save(new Project("Josh", "Long"));
 
 		mainView.listCustomers("Long");
 
@@ -100,7 +100,7 @@ public class MainViewTests
 
 	@Test
 	public void shouldMakeEditorVisible() {
-		Customer first = getCustomersInGrid().get(0);
+		Project first = getCustomersInGrid().get(0);
 		this.mainView.grid.select(first);
 
 		then(this.editor.isVisible()).isTrue();
@@ -110,7 +110,7 @@ public class MainViewTests
 			String lastName) {
 		this.editor.firstName.setValue(firstName);
 		this.editor.lastName.setValue(lastName);
-		editor.editCustomer(new Customer(firstName, lastName));
+		editor.editCustomer(new Project(firstName, lastName));
 	}
 
 	@Configuration
@@ -122,11 +122,11 @@ public class MainViewTests
 
 		@PostConstruct
 		public void initializeData() {
-			this.repository.save(new Customer("Jack", "Bauer"));
-			this.repository.save(new Customer("Chloe", "O'Brian"));
-			this.repository.save(new Customer("Kim", "Bauer"));
-			this.repository.save(new Customer("David", "Palmer"));
-			this.repository.save(new Customer("Michelle", "Dessler"));
+			this.repository.save(new Project("Jack", "Bauer"));
+			this.repository.save(new Project("Chloe", "O'Brian"));
+			this.repository.save(new Project("Kim", "Bauer"));
+			this.repository.save(new Project("David", "Palmer"));
+			this.repository.save(new Project("Michelle", "Dessler"));
 		}
 	}
 }

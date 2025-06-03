@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
-public class Customer {
+public class Project {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_sequence")
@@ -18,10 +18,10 @@ public class Customer {
 
 	private String lastName;
 
-	protected Customer() {
+	protected Project() {
 	}
 
-	public Customer(String firstName, String lastName) {
+	public Project(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
