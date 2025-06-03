@@ -56,25 +56,21 @@ public class ProjectEditor extends HorizontalLayout implements KeyNotifier
     DocumentEditor documentEditor;
     DocumentRepository documentRepository;
         
-	@Autowired
-//	public CustomerEditor(CustomerRepository repository, DocumentEditor documentEditor)
-	public ProjectEditor(ProjectRepository repository, DocumentRepository documentRepository)
-        {
-		this.repository = repository;
-                
-                var primaryContent = new VerticalLayout();
-                
-		primaryContent.add(id, title, notes, actions);
-                
-//                var secondaryContent = new DocumentEditor(documentRepo);
+    @Autowired
+//  public CustomerEditor(CustomerRepository repository, DocumentEditor documentEditor)
+    public ProjectEditor(ProjectRepository repository, DocumentRepository documentRepository)
+    {
+        this.repository = repository;
 
+        var primaryContent = new VerticalLayout();
 
-//            this.documentEditor = documentEditor;
-            this.documentEditor = new DocumentEditor(repository, documentRepository);
-            
-            
+        primaryContent.add(id, title, notes, actions);
                 
-                add(primaryContent, documentEditor);
+        this.documentEditor = new DocumentEditor(repository, documentRepository);
+                                      
+        add(primaryContent, documentEditor);
+
+        setFlexGrow(2, documentEditor);
 
 		// bind using naming convention
 		binder.bindInstanceFields(this);                               
@@ -94,21 +90,21 @@ public class ProjectEditor extends HorizontalLayout implements KeyNotifier
 		cancel.addClickListener(e -> editCustomer(customer));
                                                
 		setVisible(false);
-	}
+    }
 
-	void delete() {
-		repository.delete(customer);
-		changeHandler.onChange();
-	}
+    void delete() {
+            repository.delete(customer);
+            changeHandler.onChange();
+    }
 
-	void save() {
-		repository.save(customer);
-		changeHandler.onChange();
-	}
+    void save() {
+            repository.save(customer);
+            changeHandler.onChange();
+    }
 
-	public interface ChangeHandler {
-		void onChange();
-	}
+    public interface ChangeHandler {
+            void onChange();
+    }
 
 	public final void editCustomer(Project c) 
         {            
@@ -153,9 +149,9 @@ public class ProjectEditor extends HorizontalLayout implements KeyNotifier
 		title.focus();
 	}
 
-	public void setChangeHandler(ChangeHandler h) {
-		// ChangeHandler is notified when either save or delete
-		// is clicked
-		changeHandler = h;
-	}
+    public void setChangeHandler(ChangeHandler h) {
+            // ChangeHandler is notified when either save or delete
+            // is clicked
+            changeHandler = h;
+    }
 }

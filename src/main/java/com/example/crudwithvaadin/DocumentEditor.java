@@ -20,13 +20,11 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @SpringComponent
 @UIScope
-public class DocumentEditor extends VerticalLayout 
-                                                    implements KeyNotifier
+public class DocumentEditor extends VerticalLayout implements KeyNotifier
         
 {
     // the current customer set by listDocuments()
     private Project customer;
-
     
     /**
      * The currently edited customer
