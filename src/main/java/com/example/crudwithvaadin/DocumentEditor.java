@@ -3,6 +3,7 @@ package com.example.crudwithvaadin;
 
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
@@ -20,8 +21,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @SpringComponent
 @UIScope
-public class DocumentEditor extends VerticalLayout implements KeyNotifier
+public class DocumentEditor extends VerticalLayout 
+                                                    implements KeyNotifier
+        
 {
+    // the current customer set by listDocuments()
+    private Customer customer;
+//    private long customerId;
+    
     /**
      * The currently edited customer
      */
@@ -29,6 +36,8 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier
     
     DocumentRepository docRepo;
     
+    CustomerRepository customerRepo;
+            
     final Grid<Document> grid;
 
     final TextField filterField;
@@ -39,15 +48,21 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier
     
     TextField url = new TextField("URL");
     
+    Button save = new Button("Save", VaadinIcon.CHECK.create());
+    
     Button cancel = new Button("Cancel");
     
     Binder binder = new Binder<>(Document.class);
     
-    private CustomerEditor.ChangeHandler changeHandler;
+    private ChangeHandler changeHandler;
+    
+    UI ui;
         
     @Autowired
-    public DocumentEditor(DocumentRepository repo)
+    public DocumentEditor(CustomerRepository customerRepo, DocumentRepository repo)
     {
+        this.customerRepo = customerRepo;
+        
         this.docRepo = repo;
                 
         this.filterField = new TextField();                
@@ -58,13 +73,14 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier
         
         this.editor = new VerticalLayout();    
         
-        editor.add(url);
+        editor.add(url, save);
         
         add(actions, grid, editor);
         
         // Instantiate and edit new Customer the new button is clicked
         addNewBtn.addClickListener(e -> editCustomer(new Document("", "", null)));
 //        addNewBtn.addClickListener(e -> editCustomer(new Document("", "", "")));
+        
 
 
 	// bind using naming convention
@@ -73,14 +89,14 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier
         setSpacing(true);
         
 //!!TODO!!  - enable next 2 commented lines        
-//        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 //        delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
 
-        addKeyPressListener(Key.ENTER, e -> save());
+        addKeyPressListener(Key.ENTER, e -> save(customer));
 
 //!!TODO!!  - enable next 3 commented lines                
         // wire action buttons to save, delete and reset
-//        save.addClickListener(e -> save());
+        save.addClickListener(e -> save(customer));        
 //        delete.addClickListener(e -> delete());
 //        cancel.addClickListener(e -> editCustomer(customer));
 
@@ -90,16 +106,38 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier
 //        setVisible(false);                
 //        setVisible(false);        
         
-        
+        ui = UI.getCurrent();
     }
+    
+//    @Override
+//    public void onAttach() 
+//    {
+//        UI ui = UI.getCurrent();
+////        ui = getUI();
+//        
+//    }
 
-    void save() {
-            docRepo.save(document);
-            changeHandler.onChange();
+    void save(Customer customer) 
+    {
+        UI ui = UI.getCurrent();        
+        ui.access(() -> 
+        {
+//            Customer customer = customerRepo.findById(Long.valueOf(customerId) ).get();
+//            Customer customer = new Customer();
+//            customer.setId(customerId);
+        
+            document.setCustomer(customer);                
+            docRepo.save(document);        
+//            changeHandler.onChange();           
+            
+            
+System.out.println("DocuentEditor#save() - end");
+        });
     }    
     
     void listDocuments(Customer customer) 
     {	
+        this.customer = customer;
         
         grid.setItems(docRepo.findAllByCustomer(customer) );
         
@@ -107,7 +145,8 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier
     
 //TODO: rename to editDocument!    
 public final void editCustomer(Document c) 
-        {            
+        {
+System.out.println("edit document: " + c);
 		if (c == null) {
 			setVisible(false);
 			return;
@@ -145,10 +184,14 @@ public final void editCustomer(Document c)
 		url.focus();
 	}    
 
-    public void setChangeHandler(CustomerEditor.ChangeHandler h) 
+    public void setChangeHandler(ChangeHandler h) 
     {
         // ChangeHandler is notified when either save or delete
         // is clicked
         changeHandler = h;
     }
+    
+    public interface ChangeHandler {
+            void onChange();
+    }    
 }

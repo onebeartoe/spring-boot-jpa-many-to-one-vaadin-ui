@@ -41,7 +41,7 @@ public class MainViewTests
 	@BeforeEach
 	public void setup() 
         {
-            documentEditor = new DocumentEditor(documentRepository);
+            documentEditor = new DocumentEditor(repository, documentRepository);
             
             
 //		this.editor = new CustomerEditor(this.repository, documentEditor);

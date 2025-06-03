@@ -25,34 +25,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 @UIScope
 public class CustomerEditor extends HorizontalLayout implements KeyNotifier
 {
+    private final CustomerRepository repository;
 
-	private final CustomerRepository repository;
+    /**
+     * The currently edited customer
+     */
+    private Customer customer;
 
-	/**
-	 * The currently edited customer
-	 */
-	private Customer customer;
+    /* Fields to edit properties in Customer entity */
 
-	/* Fields to edit properties in Customer entity */
+    TextField id = new TextField("Stamp");
 
-        TextField id = new TextField("Stamp");
-        
-	TextField firstName = new TextField("First name");
+    TextField firstName = new TextField("First name");
 
-        TextField lastName = new TextField("Last name");
+    TextField lastName = new TextField("Last name");
 
-	/* Action buttons */
-	Button save = new Button("Save", VaadinIcon.CHECK.create());
-	Button cancel = new Button("Cancel");
-	Button delete = new Button("Delete", VaadinIcon.TRASH.create());
-	HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
+    /* Action buttons */
+    Button save = new Button("Save", VaadinIcon.CHECK.create());
+    
+    Button cancel = new Button("Cancel");
+    
+    Button delete = new Button("Delete", VaadinIcon.TRASH.create());
+    
+    HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
 
-	Binder<Customer> binder = new Binder<>(Customer.class);
-        
-	private ChangeHandler changeHandler;
+    Binder<Customer> binder = new Binder<>(Customer.class);
 
-        DocumentEditor documentEditor;
-        DocumentRepository documentRepository;
+    private ChangeHandler changeHandler;
+
+    DocumentEditor documentEditor;
+    DocumentRepository documentRepository;
         
 	@Autowired
 //	public CustomerEditor(CustomerRepository repository, DocumentEditor documentEditor)
@@ -68,7 +70,7 @@ public class CustomerEditor extends HorizontalLayout implements KeyNotifier
 
 
 //            this.documentEditor = documentEditor;
-            this.documentEditor = new DocumentEditor(documentRepository);
+            this.documentEditor = new DocumentEditor(repository, documentRepository);
             
             
                 
