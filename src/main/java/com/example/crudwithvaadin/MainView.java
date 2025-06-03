@@ -25,22 +25,22 @@ public class MainView extends VerticalLayout
 
     public MainView(ProjectRepository repo, ProjectEditor editor) 
     {
-		this.repo = repo;
-		this.editor = editor;
-		this.grid = new Grid<>(Project.class);
-		this.filter = new TextField();
-		this.addNewBtn = new Button("New Project", VaadinIcon.PLUS.create());
+        this.repo = repo;
+        this.editor = editor;
+        this.grid = new Grid<>(Project.class);
+        this.filter = new TextField();
+        this.addNewBtn = new Button("New Project", VaadinIcon.PLUS.create());
 
-		// build layout
-		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-                
-		add(actions, grid, editor);
+        // build layout
+        HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
 
-		grid.setHeight("300px");
-		grid.setColumns("id", "title", "notes");
-		grid.getColumnByKey("id");//.setWidth("50px").setFlexGrow(0);
+        add(actions, grid, editor);
 
-		filter.setPlaceholder("Filter by Title");
+        grid.setHeight("300px");
+        grid.setColumns("id", "title", "notes");
+        grid.getColumnByKey("id");//.setWidth("50px").setFlexGrow(0);
+
+        filter.setPlaceholder("Filter by Title");
 
 		// Hook logic to components
 
@@ -68,14 +68,16 @@ public class MainView extends VerticalLayout
 		listCustomers(null);
 	}
 
-	// tag::listCustomers[]
-	void listCustomers(String filterText) {
-		if (StringUtils.hasText(filterText)) {
-			grid.setItems(repo.findByTitleContainsIgnoreCase(filterText));
-		} else {
-			grid.setItems(repo.findAll());
-		}
-	}
-	// end::listCustomers[]
-
+	
+    void listCustomers(String filterText) 
+    {
+        if (StringUtils.hasText(filterText)) 
+        {
+            grid.setItems(repo.findByTitleContainsIgnoreCase(filterText));
+        } 
+        else 
+        {
+            grid.setItems(repo.findAll());
+        }
+    }	
 }

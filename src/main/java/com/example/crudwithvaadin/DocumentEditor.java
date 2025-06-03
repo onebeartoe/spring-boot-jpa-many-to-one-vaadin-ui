@@ -3,7 +3,6 @@ package com.example.crudwithvaadin;
 
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
