@@ -43,8 +43,8 @@ public class ProjectEditorTests {
         {
             emptyCustomerWasSetToForm();
 
-            this.editor.firstName.setValue(FIRST_NAME);
-            this.editor.lastName.setValue(LAST_NAME);
+            this.editor.title.setValue(FIRST_NAME);
+            this.editor.notes.setValue(LAST_NAME);
 
             this.editor.save();
 
@@ -69,8 +69,9 @@ public class ProjectEditorTests {
 		this.editor.editCustomer(new Project(FIRST_NAME, LAST_NAME));
 	}
 
-	ArgumentMatcher<Project> customerMatchesEditorFields() {
-		return customer -> FIRST_NAME.equals(customer.getFirstName()) && LAST_NAME.equals(customer.getLastName());
-	}
-
+    ArgumentMatcher<Project> customerMatchesEditorFields() 
+    {
+        return customer -> FIRST_NAME.equals(customer.getTitle() ) 
+                            && LAST_NAME.equals(customer.getNotes() );
+    }
 }

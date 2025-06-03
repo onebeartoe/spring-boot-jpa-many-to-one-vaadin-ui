@@ -24,8 +24,9 @@ public class CrudWithVaadinApplicationTests {
 		then(this.repository.count()).isEqualTo(5);
 	}
 
-	@Test
-	public void shouldFindTwoBauerCustomers() {
-		then(this.repository.findByLastNameStartsWithIgnoreCase("Bauer")).hasSize(2);
-	}
+    @Test
+    public void shouldFindTwoBauerCustomers() 
+    {
+        then(this.repository.findByNotesContainsIgnoreCase("Bauer")).hasSize(2);
+    }
 }

@@ -74,7 +74,7 @@ public class MainViewTests
 		then(getCustomersInGrid()).hasSize(initialCustomerCount + 1);
 
 		then(getCustomersInGrid().get(getCustomersInGrid().size() - 1))
-			.extracting("firstName", "lastName")
+			.extracting("title", "notes")
 			.containsExactly("Marcin", "Grzejszczak");
 
 	}
@@ -84,11 +84,12 @@ public class MainViewTests
 
 		this.repository.save(new Project("Josh", "Long"));
 
-		mainView.listCustomers("Long");
+		mainView.listCustomers("Josh");
+//		mainView.listCustomers("Long");
 
 		then(getCustomersInGrid()).hasSize(1);
 		then(getCustomersInGrid().get(getCustomersInGrid().size() - 1))
-			.extracting("firstName", "lastName")
+			.extracting("title", "notes")
 			.containsExactly("Josh", "Long");
 	}
 
@@ -108,8 +109,8 @@ public class MainViewTests
 
 	private void customerDataWasFilled(ProjectEditor editor, String firstName,
 			String lastName) {
-		this.editor.firstName.setValue(firstName);
-		this.editor.lastName.setValue(lastName);
+		this.editor.title.setValue(firstName);
+		this.editor.notes.setValue(lastName);
 		editor.editCustomer(new Project(firstName, lastName));
 	}
 

@@ -37,10 +37,10 @@ public class MainView extends VerticalLayout
 		add(actions, grid, editor);
 
 		grid.setHeight("300px");
-		grid.setColumns("id", "firstName", "lastName");
+		grid.setColumns("id", "title", "notes");
 		grid.getColumnByKey("id");//.setWidth("50px").setFlexGrow(0);
 
-		filter.setPlaceholder("Filter by last name");
+		filter.setPlaceholder("Filter by Title");
 
 		// Hook logic to components
 
@@ -71,7 +71,7 @@ public class MainView extends VerticalLayout
 	// tag::listCustomers[]
 	void listCustomers(String filterText) {
 		if (StringUtils.hasText(filterText)) {
-			grid.setItems(repo.findByLastNameStartsWithIgnoreCase(filterText));
+			grid.setItems(repo.findByTitleContainsIgnoreCase(filterText));
 		} else {
 			grid.setItems(repo.findAll());
 		}

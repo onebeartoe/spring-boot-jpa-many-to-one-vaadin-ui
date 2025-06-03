@@ -55,7 +55,8 @@ public class CrudWithVaadinApplication
 			log.info("Project found with findByLastNameStartsWithIgnoreCase('Bauer'):");
 			log.info("--------------------------------------------");
 			for (Project bauer : repository
-					.findByLastNameStartsWithIgnoreCase("Bauer")) {
+					.findByTitleContainsIgnoreCase("Bauer")) 
+                        {
 				log.info(bauer.toString());
 			}
 			log.info("");

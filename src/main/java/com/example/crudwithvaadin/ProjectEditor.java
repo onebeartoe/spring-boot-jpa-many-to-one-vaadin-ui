@@ -36,9 +36,9 @@ public class ProjectEditor extends HorizontalLayout implements KeyNotifier
 
     TextField id = new TextField("Stamp");
 
-    TextField firstName = new TextField("First name");
+    TextField title = new TextField("Title");
 
-    TextField lastName = new TextField("Last name");
+    TextField notes = new TextField("Notes");
 
     /* Action buttons */
     Button save = new Button("Save", VaadinIcon.CHECK.create());
@@ -64,7 +64,7 @@ public class ProjectEditor extends HorizontalLayout implements KeyNotifier
                 
                 var primaryContent = new VerticalLayout();
                 
-		primaryContent.add(id, firstName, lastName, actions);
+		primaryContent.add(id, title, notes, actions);
                 
 //                var secondaryContent = new DocumentEditor(documentRepo);
 
@@ -150,7 +150,7 @@ public class ProjectEditor extends HorizontalLayout implements KeyNotifier
 //            documentEditor.listDocuments(customer);
 
 		// Focus first name initially
-		firstName.focus();
+		title.focus();
 	}
 
 	public void setChangeHandler(ChangeHandler h) {

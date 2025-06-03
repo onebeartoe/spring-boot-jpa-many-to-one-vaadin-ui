@@ -6,5 +6,9 @@ import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
-	List<Project> findByLastNameStartsWithIgnoreCase(String lastName);
+	List<Project> findByTitleContainsIgnoreCase(String title);
+        
+        List<Project> findByNotesContainsIgnoreCase(String notes);
+        
+        
 }
