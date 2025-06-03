@@ -12,7 +12,7 @@ import org.mockito.Mock;
 public class CrudWithVaadinApplicationTests {
 
 	@Autowired
-	private CustomerRepository repository;
+	private ProjectRepository repository;
 
 	@Autowired
         DocumentRepository documentRepository;        

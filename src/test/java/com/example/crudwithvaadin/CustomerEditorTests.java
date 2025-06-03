@@ -18,7 +18,7 @@ public class CustomerEditorTests {
 	private static final String LAST_NAME = "Grzejszczak";
 
 	@Mock 
-        CustomerRepository customerRepository;
+        ProjectRepository customerRepository;
         
 	@Mock 
         DocumentRepository documentRepository;

@@ -25,7 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @UIScope
 public class CustomerEditor extends HorizontalLayout implements KeyNotifier
 {
-    private final CustomerRepository repository;
+    private final ProjectRepository repository;
 
     /**
      * The currently edited customer
@@ -58,7 +58,7 @@ public class CustomerEditor extends HorizontalLayout implements KeyNotifier
         
 	@Autowired
 //	public CustomerEditor(CustomerRepository repository, DocumentEditor documentEditor)
-	public CustomerEditor(CustomerRepository repository, DocumentRepository documentRepository)
+	public CustomerEditor(ProjectRepository repository, DocumentRepository documentRepository)
         {
 		this.repository = repository;
                 

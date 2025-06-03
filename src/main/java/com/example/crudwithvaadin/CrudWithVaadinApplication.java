@@ -19,7 +19,7 @@ public class CrudWithVaadinApplication
 	}
 
 	@Bean
-	public CommandLineRunner loadData(CustomerRepository repository, DocumentRepository docRepo) 
+	public CommandLineRunner loadData(ProjectRepository repository, DocumentRepository docRepo) 
         {
 		return (args) -> {
 			// save a couple of customers

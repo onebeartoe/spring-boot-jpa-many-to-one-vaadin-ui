@@ -36,7 +36,7 @@ public class DocumentEditor extends VerticalLayout
     
     DocumentRepository docRepo;
     
-    CustomerRepository customerRepo;
+    ProjectRepository customerRepo;
             
     final Grid<Document> grid;
 
@@ -59,7 +59,7 @@ public class DocumentEditor extends VerticalLayout
 //    UI ui;
         
     @Autowired
-    public DocumentEditor(CustomerRepository customerRepo, DocumentRepository repo)
+    public DocumentEditor(ProjectRepository customerRepo, DocumentRepository repo)
     {
         this.customerRepo = customerRepo;
         

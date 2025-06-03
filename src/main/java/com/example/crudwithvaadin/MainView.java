@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 @Route
 public class MainView extends VerticalLayout 
 {
-    private final CustomerRepository repo;
+    private final ProjectRepository repo;
 
     private final CustomerEditor editor;
 
@@ -23,7 +23,7 @@ public class MainView extends VerticalLayout
 
     private final Button addNewBtn;
 
-    public MainView(CustomerRepository repo, CustomerEditor editor) 
+    public MainView(ProjectRepository repo, CustomerEditor editor) 
     {
 		this.repo = repo;
 		this.editor = editor;

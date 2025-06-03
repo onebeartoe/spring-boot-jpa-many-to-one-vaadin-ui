@@ -24,7 +24,7 @@ public class MainViewTests
 {
 //        @Mock
 	@Autowired 
-        CustomerRepository repository;
+        ProjectRepository repository;
 
         @Mock
 //        @Autowired
@@ -118,7 +118,7 @@ public class MainViewTests
 	static class Config {
 
 		@Autowired
-		CustomerRepository repository;
+		ProjectRepository repository;
 
 		@PostConstruct
 		public void initializeData() {
