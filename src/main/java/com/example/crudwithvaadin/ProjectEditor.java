@@ -54,6 +54,7 @@ public class ProjectEditor extends HorizontalLayout implements KeyNotifier
     private ChangeHandler changeHandler;
 
     DocumentEditor documentEditor;
+    
     DocumentRepository documentRepository;
         
     @Autowired
@@ -70,8 +71,12 @@ public class ProjectEditor extends HorizontalLayout implements KeyNotifier
                                       
         add(primaryContent, documentEditor);
 
-        setFlexGrow(2, documentEditor);
+        
+//        setFlexGrow(3, primaryContent);
+//        setFlexGrow(1, documentEditor);
+//        setFlexGrow(3, documentEditor);
 
+        
 		// bind using naming convention
 		binder.bindInstanceFields(this);                               
                 

@@ -65,9 +65,15 @@ public class DocumentEditor extends VerticalLayout implements KeyNotifier
         HorizontalLayout actions = new HorizontalLayout(filterField, addNewBtn);
         
         this.grid = new Grid<>(Document.class);
+  
+        
+        setWidth("800px");
+//        setWidth("80%");
+//        setWidthFull();
         
 //TODO: increase the width of the Documet grid        
-//        grid.setWidth("60%");
+//        grid.setWidth("60%");   // no percents?!?
+        grid.setWidth("900px");
 //        grid.setWidth("300px");
         
 
