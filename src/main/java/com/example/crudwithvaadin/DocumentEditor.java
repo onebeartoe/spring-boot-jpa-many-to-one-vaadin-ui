@@ -128,7 +128,9 @@ public class DocumentEditor extends VerticalLayout
         
             document.setCustomer(customer);                
             docRepo.save(document);        
-//            changeHandler.onChange();           
+//            changeHandler.onChange();          
+
+            listDocuments(customer);
             
             
 System.out.println("DocuentEditor#save() - end");
