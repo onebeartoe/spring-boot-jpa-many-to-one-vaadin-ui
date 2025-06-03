@@ -26,7 +26,7 @@ public class DocumentEditor extends VerticalLayout
 {
     // the current customer set by listDocuments()
     private Project customer;
-//    private long customerId;
+
     
     /**
      * The currently edited customer
@@ -53,9 +53,7 @@ public class DocumentEditor extends VerticalLayout
     
     Binder binder = new Binder<>(Document.class);
     
-    private ChangeHandler changeHandler;
-    
-//    UI ui;
+    private ChangeHandler changeHandler;   
         
     @Autowired
     public DocumentEditor(ProjectRepository customerRepo, DocumentRepository repo)
@@ -70,6 +68,11 @@ public class DocumentEditor extends VerticalLayout
         
         this.grid = new Grid<>(Document.class);
         
+//TODO: increase the width of the Documet grid        
+//        grid.setWidth("60%");
+//        grid.setWidth("300px");
+        
+
         this.editor = new VerticalLayout();    
         
         editor.add(url, save);
@@ -77,10 +80,9 @@ public class DocumentEditor extends VerticalLayout
         add(actions, grid, editor);
         
         // Instantiate and edit new Customer the new button is clicked
-        addNewBtn.addClickListener(e -> editCustomer(new Document("", "", null)));
+        addNewBtn.addClickListener(e -> editDocument(new Document("", "", null)));
 //        addNewBtn.addClickListener(e -> editCustomer(new Document("", "", "")));
         
-
 
 	// bind using naming convention
         binder.bindInstanceFields(this);                               
@@ -98,42 +100,19 @@ public class DocumentEditor extends VerticalLayout
         save.addClickListener(e -> save(customer));        
 //        delete.addClickListener(e -> delete());
 //        cancel.addClickListener(e -> editCustomer(customer));
-
-
-
-// This was false
-//        setVisible(false);                
-//        setVisible(false);        
-        
-//        ui = UI.getCurrent();
     }
     
-//    @Override
-//    public void onAttach() 
-//    {
-//        UI ui = UI.getCurrent();
-////        ui = getUI();
-//        
-//    }
-
     void save(Project customer) 
-    {
-//        UI ui = UI.getCurrent();        
-//        ui.access(() -> 
-//        {
-//            Customer customer = customerRepo.findById(Long.valueOf(customerId) ).get();
-//            Customer customer = new Customer();
-//            customer.setId(customerId);
-        
+    {        
             document.setProject(customer);                
             docRepo.save(document);        
-//            changeHandler.onChange();          
+
 
             listDocuments(customer);
             
             
 System.out.println("DocuentEditor#save() - end");
-//        });
+
     }    
     
     void listDocuments(Project customer) 
@@ -144,9 +123,10 @@ System.out.println("DocuentEditor#save() - end");
         
     }
     
-//TODO: rename to editDocument!    
-public final void editCustomer(Document c) 
-        {
+
+
+    public final void editDocument(Document c)         
+    {
 System.out.println("edit document: " + c);
 		if (c == null) {
 			setVisible(false);
@@ -155,13 +135,12 @@ System.out.println("edit document: " + c);
 	
                 final boolean persisted = c.getId() != null;
 		
-                if (persisted) {
+                if (persisted) 
+                {
 			// Find fresh entity for editing
 			// In a more complex app, you might want to load
 			// the entity/DTO with lazy loaded relations for editing
-			document = docRepo.findById(c.getId()).get();
-                        
-//                        documentEditor.listDocuments(customer);
+			document = docRepo.findById(c.getId()).get();                        
 		}
 		else {
 			document = c;
@@ -177,7 +156,6 @@ System.out.println("edit document: " + c);
                 
                 // this field was showing ',' as part of the number
                 var idValue = document.getId() == null ? "" : document.getId().toString();
-//                id.setValue( idValue );
       
 		setVisible(true);                
 

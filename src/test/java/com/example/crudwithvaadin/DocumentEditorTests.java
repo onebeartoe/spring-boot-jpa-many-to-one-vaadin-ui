@@ -42,7 +42,7 @@ Document doc = new Document(testUrl, testUrl, customer);
         
         editor.listDocuments(customer);
         
-        editor.editCustomer(doc);
+        editor.editDocument(doc);
         
         this.editor.save(customer);
 //
