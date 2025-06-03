@@ -16,7 +16,6 @@ import org.hibernate.annotations.OnDeleteAction;
  *
  */
 @Entity
-
 @Table(name = "documents")
 public class Document 
 {
@@ -24,13 +23,12 @@ public class Document
     @GeneratedValue
     private Long id;
 
-
     private String url;
 
     private String notes;
 
-          @ManyToOne(fetch = FetchType.EAGER, optional = false)
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)  // this caused a retreive error
     @JoinColumn(name = "customer_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore

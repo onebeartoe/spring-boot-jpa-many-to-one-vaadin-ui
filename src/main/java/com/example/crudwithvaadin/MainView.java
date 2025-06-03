@@ -13,18 +13,18 @@ import org.springframework.util.StringUtils;
 @Route
 public class MainView extends VerticalLayout 
 {
-	private final CustomerRepository repo;
+    private final CustomerRepository repo;
 
-	private final CustomerEditor editor;
+    private final CustomerEditor editor;
 
-	final Grid<Customer> grid;
+    final Grid<Customer> grid;
 
-	final TextField filter;
+    final TextField filter;
 
-	private final Button addNewBtn;
+    private final Button addNewBtn;
 
-	public MainView(CustomerRepository repo, CustomerEditor editor) 
-        {
+    public MainView(CustomerRepository repo, CustomerEditor editor) 
+    {
 		this.repo = repo;
 		this.editor = editor;
 		this.grid = new Grid<>(Customer.class);
