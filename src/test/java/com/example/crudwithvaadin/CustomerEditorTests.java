@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class CustomerEditorTests {
 
-	private static final String FIRST_NAME = "Marcin";
+	static final String FIRST_NAME = "Marcin";
 	private static final String LAST_NAME = "Grzejszczak";
 
 	@Mock 
@@ -39,15 +39,16 @@ public class CustomerEditorTests {
 	}
 
 	@Test
-	public void shouldStoreCustomerInRepoWhenEditorSaveClicked() {
-		emptyCustomerWasSetToForm();
+	public void shouldStoreCustomerInRepoWhenEditorSaveClicked() 
+        {
+            emptyCustomerWasSetToForm();
 
-		this.editor.firstName.setValue(FIRST_NAME);
-		this.editor.lastName.setValue(LAST_NAME);
+            this.editor.firstName.setValue(FIRST_NAME);
+            this.editor.lastName.setValue(LAST_NAME);
 
-		this.editor.save();
+            this.editor.save();
 
-		then(this.customerRepository).should().save(argThat(customerMatchesEditorFields()));
+            then(this.customerRepository).should().save(argThat(customerMatchesEditorFields()));
 	}
 
 	@Test
@@ -59,14 +60,16 @@ public class CustomerEditorTests {
 		then(this.customerRepository).should().delete(argThat(customerMatchesEditorFields()));
 	}
 
-	private void emptyCustomerWasSetToForm() {
-		this.editor.editCustomer(new Customer());
-	}
+    private void emptyCustomerWasSetToForm() 
+    {
+        this.editor.editCustomer(new Customer());
+    }
+        
 	private void customerDataWasFilled() {
 		this.editor.editCustomer(new Customer(FIRST_NAME, LAST_NAME));
 	}
 
-	private ArgumentMatcher<Customer> customerMatchesEditorFields() {
+	ArgumentMatcher<Customer> customerMatchesEditorFields() {
 		return customer -> FIRST_NAME.equals(customer.getFirstName()) && LAST_NAME.equals(customer.getLastName());
 	}
 

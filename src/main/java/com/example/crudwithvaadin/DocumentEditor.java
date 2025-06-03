@@ -56,7 +56,7 @@ public class DocumentEditor extends VerticalLayout
     
     private ChangeHandler changeHandler;
     
-    UI ui;
+//    UI ui;
         
     @Autowired
     public DocumentEditor(CustomerRepository customerRepo, DocumentRepository repo)
@@ -106,7 +106,7 @@ public class DocumentEditor extends VerticalLayout
 //        setVisible(false);                
 //        setVisible(false);        
         
-        ui = UI.getCurrent();
+//        ui = UI.getCurrent();
     }
     
 //    @Override
@@ -119,9 +119,9 @@ public class DocumentEditor extends VerticalLayout
 
     void save(Customer customer) 
     {
-        UI ui = UI.getCurrent();        
-        ui.access(() -> 
-        {
+//        UI ui = UI.getCurrent();        
+//        ui.access(() -> 
+//        {
 //            Customer customer = customerRepo.findById(Long.valueOf(customerId) ).get();
 //            Customer customer = new Customer();
 //            customer.setId(customerId);
@@ -134,7 +134,7 @@ public class DocumentEditor extends VerticalLayout
             
             
 System.out.println("DocuentEditor#save() - end");
-        });
+//        });
     }    
     
     void listDocuments(Customer customer) 
