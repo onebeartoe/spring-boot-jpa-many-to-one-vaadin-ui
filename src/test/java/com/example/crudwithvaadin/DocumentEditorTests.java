@@ -11,7 +11,7 @@ import org.mockito.InjectMocks;
 /**
  *
  */
-public class DocumentEditorTests extends CustomerEditorTests
+public class DocumentEditorTests extends ProjectEditorTests
 {
     @InjectMocks
     DocumentEditor editor;

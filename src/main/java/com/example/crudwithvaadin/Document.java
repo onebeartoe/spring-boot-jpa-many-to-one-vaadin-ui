@@ -29,10 +29,10 @@ public class Document
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
 //    @ManyToOne(fetch = FetchType.LAZY, optional = false)  // this caused a retreive error
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "project_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Project customer;
+    private Project project;
 
     public Document() {
     }    
@@ -43,7 +43,7 @@ public class Document
         
         this.notes = notes;
         
-        this.customer = customer;
+        this.project = customer;
     }
 
 
@@ -71,13 +71,15 @@ public class Document
         this.notes = notes;
     }
 
-    public Project getCustomer() {
-        return customer;
+    public Project getProject() {
+        return project;
     }
 
-    public void setCustomer(Project customer) {
-        this.customer = customer;
+    public void setProject(Project project) {
+        this.project = project;
     }
+
+
 }
 
 

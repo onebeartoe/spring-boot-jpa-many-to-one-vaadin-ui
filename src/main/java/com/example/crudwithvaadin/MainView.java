@@ -15,7 +15,7 @@ public class MainView extends VerticalLayout
 {
     private final ProjectRepository repo;
 
-    private final CustomerEditor editor;
+    private final ProjectEditor editor;
 
     final Grid<Project> grid;
 
@@ -23,13 +23,13 @@ public class MainView extends VerticalLayout
 
     private final Button addNewBtn;
 
-    public MainView(ProjectRepository repo, CustomerEditor editor) 
+    public MainView(ProjectRepository repo, ProjectEditor editor) 
     {
 		this.repo = repo;
 		this.editor = editor;
 		this.grid = new Grid<>(Project.class);
 		this.filter = new TextField();
-		this.addNewBtn = new Button("New Customer", VaadinIcon.PLUS.create());
+		this.addNewBtn = new Button("New Project", VaadinIcon.PLUS.create());
 
 		// build layout
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);

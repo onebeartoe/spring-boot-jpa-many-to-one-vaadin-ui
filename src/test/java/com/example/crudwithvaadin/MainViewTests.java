@@ -32,7 +32,7 @@ public class MainViewTests
         
 	VaadinRequest vaadinRequest = Mockito.mock(VaadinRequest.class);
 
-	CustomerEditor editor;
+	ProjectEditor editor;
 
 	MainView mainView;
         
@@ -45,7 +45,7 @@ public class MainViewTests
             
             
 //		this.editor = new CustomerEditor(this.repository, documentEditor);
-		this.editor = new CustomerEditor(this.repository, documentRepository);
+		this.editor = new ProjectEditor(this.repository, documentRepository);
                 
 		this.mainView = new MainView(this.repository, editor);
 	}
@@ -106,7 +106,7 @@ public class MainViewTests
 		then(this.editor.isVisible()).isTrue();
 	}
 
-	private void customerDataWasFilled(CustomerEditor editor, String firstName,
+	private void customerDataWasFilled(ProjectEditor editor, String firstName,
 			String lastName) {
 		this.editor.firstName.setValue(firstName);
 		this.editor.lastName.setValue(lastName);

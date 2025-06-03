@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class CustomerEditorTests {
+public class ProjectEditorTests {
 
 	static final String FIRST_NAME = "Marcin";
 	private static final String LAST_NAME = "Grzejszczak";
@@ -28,10 +28,10 @@ public class CustomerEditorTests {
         
 //	@Mock
 	@InjectMocks
-        CustomerEditor editor;
+        ProjectEditor editor;
         
 	@Mock 
-        CustomerEditor.ChangeHandler changeHandler;
+        ProjectEditor.ChangeHandler changeHandler;
 
 	@BeforeEach
 	public void init() {

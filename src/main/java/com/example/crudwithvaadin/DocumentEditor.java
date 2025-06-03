@@ -126,7 +126,7 @@ public class DocumentEditor extends VerticalLayout
 //            Customer customer = new Customer();
 //            customer.setId(customerId);
         
-            document.setCustomer(customer);                
+            document.setProject(customer);                
             docRepo.save(document);        
 //            changeHandler.onChange();          
 
@@ -141,7 +141,7 @@ System.out.println("DocuentEditor#save() - end");
     {	
         this.customer = customer;
         
-        grid.setItems(docRepo.findAllByCustomer(customer) );
+        grid.setItems(docRepo.findAllByProject(customer) );
         
     }
     

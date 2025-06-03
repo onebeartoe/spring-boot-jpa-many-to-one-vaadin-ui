@@ -35,7 +35,7 @@ public class CrudWithVaadinApplication
 			repository.save(c5);
 
 			// fetch all customers
-			log.info("Customers found with findAll():");
+			log.info("Projects found with findAll():");
 			log.info("-------------------------------");
 			for (Project customer : repository.findAll()) {
 				log.info(customer.toString());
@@ -46,13 +46,13 @@ public class CrudWithVaadinApplication
 //                        var targetId = 1L;
                         var targetId = 5976359L;
 			Project customer = repository.findById(targetId).get();
-			log.info("Customer found with findOne(1L):");
+			log.info("Projects found with findOne(1L):");
 			log.info("--------------------------------");
 			log.info(customer.toString());
 			log.info("");
 
 			// fetch customers by last name
-			log.info("Customer found with findByLastNameStartsWithIgnoreCase('Bauer'):");
+			log.info("Project found with findByLastNameStartsWithIgnoreCase('Bauer'):");
 			log.info("--------------------------------------------");
 			for (Project bauer : repository
 					.findByLastNameStartsWithIgnoreCase("Bauer")) {
@@ -71,7 +71,7 @@ public class CrudWithVaadinApplication
                         docRepo.save(doc5a);
                         
                         // look for the saved doc1
-                        var testDocs = docRepo.findAllByCustomer(c1);
+                        var testDocs = docRepo.findAllByProject(c1);
                         log.info("Retrieved Document:");
                         log.info(testDocs.toString() );
 		};

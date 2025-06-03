@@ -52,7 +52,7 @@ public class Project {
 
 	@Override
 	public String toString() {
-		return String.format("Customer[id=%d, firstName='%s', lastName='%s']", id,
+		return String.format("Project[id=%d, firstName='%s', lastName='%s']", id,
 				firstName, lastName);
 	}
 
